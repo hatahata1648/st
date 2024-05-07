@@ -52,9 +52,8 @@ function convertToIllustration(imageData) {
   fetch(`${apiHost}/v1/generation/${engineId}/image-to-image`, {
     method: 'POST',
     headers: {
-      ...formData.getHeaders(),
-      Accept: 'application/json',
-      Authorization: `Bearer ${apiKey}`,
+      'Accept': 'application/json',
+      'Authorization': `Bearer ${apiKey}`,
     },
     body: formData,
   })
