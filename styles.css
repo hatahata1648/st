@@ -1,0 +1,18 @@
+body {
+  font-family: Arial, sans-serif;
+  text-align: center;
+}
+
+#camera-container {
+  margin-bottom: 20px;
+}
+
+#camera-stream {
+  width: 100%;
+  max-width: 500px;
+  border: 1px solid #ccc;
+}
+
+#result-img {
+  max-width: 100%;
+}

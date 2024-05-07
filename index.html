@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Photo to Illustration</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main>
+    <h1>Photo to Illustration</h1>
+    <div id="camera-container">
+      <video id="camera-stream" autoplay></video>
+      <button id="capture-btn">Capture Photo</button>
+    </div>
+    <div id="result-container" style="display: none;">
+      <img id="result-img" src="" alt="Result">
+      <a id="download-link" download="illustration.png">Download Illustration</a>
+    </div>
+  </main>
+  <script src="app.js"></script>
+</body>
+</html>
