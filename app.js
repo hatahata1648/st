@@ -33,7 +33,7 @@ function setDownloadLink(imageData) {
 
 const apiHost = 'https://api.stability.ai';
 const engineId = 'stable-diffusion-v1-6';
-const apiKey = 'sk-cv6c536ROWDwzztOWSR3uByhh0r18whaSQSfaPIR9hY7AUT3';
+const apiKey = 'sk-lY2KWdJhoeXfNBbePmSo7tfYUQXhDWDY0QdldKNGFx9TKwxF';
 
 function convertToIllustration(imageData) {
   const formData = new FormData();
@@ -49,7 +49,7 @@ function convertToIllustration(imageData) {
     method: 'POST',
     headers: {
       'Accept': 'application/json',
-      'Authorization': `Bearer ${apiKey}`,
+      'Authorization': `Bearer ${sk-lY2KWdJhoeXfNBbePmSo7tfYUQXhDWDY0QdldKNGFx9TKwxF}`,
     },
     body: formData,
   })
