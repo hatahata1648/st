@@ -6,7 +6,6 @@ const downloadLink = document.getElementById('download-link');
 
 let mediaStream;
 
-// カメラへのアクセスを要求する
 navigator.mediaDevices.getUserMedia({ video: true })
   .then(stream => {
     mediaStream = stream;
@@ -16,7 +15,6 @@ navigator.mediaDevices.getUserMedia({ video: true })
     console.error('カメラにアクセスできません', error);
   });
 
-// 写真を撮影する
 captureBtn.addEventListener('click', () => {
   const canvas = document.createElement('canvas');
   canvas.width = cameraStream.width;
@@ -25,19 +23,18 @@ captureBtn.addEventListener('click', () => {
   ctx.drawImage(cameraStream, 0, 0);
   const imageData = canvas.toDataURL('image/png');
 
-  // 撮影した写真をイラスト化する関数を呼び出す
   convertToIllustration(imageData);
 });
 
-// イラスト化された画像をダウンロードリンクに設定する
 function setDownloadLink(imageData) {
   resultImg.src = imageData;
   downloadLink.href = imageData;
   resultContainer.style.display = 'block';
 }
+
 const apiHost = 'https://api.stability.ai';
 const engineId = 'stable-diffusion-v1-6';
-const apiKey = 'sk-lY2KWdJhoeXfNBbePmSo7tfYUQXhDWDY0QdldKNGFx9TKwxF'; // API キーを設定する
+const apiKey = 'YOUR_API_KEY';
 
 function convertToIllustration(imageData) {
   const formData = new FormData();
@@ -57,17 +54,27 @@ function convertToIllustration(imageData) {
     },
     body: formData,
   })
-    .then(response => response.json())
+    .then(response => {
+      if (!response.ok) {
+        return response.json().then(error => {
+          throw new Error(`${error.name}: ${error.message} (${error.id})`);
+        });
+      }
+      return response.json();
+    })
     .then(data => {
-      const imageData = `data:image/png;base64,${data.artifacts[0].base64}`;
-      setDownloadLink(imageData);
+      if (data.artifacts && data.artifacts.length > 0) {
+        const imageData = `data:image/png;base64,${data.artifacts[0].base64}`;
+        setDownloadLink(imageData);
+      } else {
+        throw new Error('レスポンスデータに画像が含まれていません');
+      }
     })
     .catch(error => {
       console.error('イラスト変換に失敗しました', error);
     });
 }
 
-// DataURLをBlobオブジェクトに変換する
 function dataURItoBlob(dataURI) {
   const binary = atob(dataURI.split(',')[1]);
   const array = [];
