@@ -33,7 +33,7 @@ function setDownloadLink(imageData) {
 
 const apiHost = 'https://api.stability.ai';
 const engineId = 'stable-diffusion-v1-6';
-const apiKey = 'sk-cv6c536ROWDwzztOWSR3uByhh0r18whaSQSfaPIR9hY7AUT3';
+const apiKey = 'YOUR_API_KEY';
 
 function convertToIllustration(imageData) {
   const formData = new FormData();
@@ -55,8 +55,9 @@ function convertToIllustration(imageData) {
   })
     .then(response => {
       if (!response.ok) {
-        return response.json().then(error => {
-          throw new Error(`${error.name}: ${error.message} (${error.id})`);
+        return response.json().then(errorData => {
+          const errorMessage = `${errorData.name}: ${errorData.message} (${errorData.id})`;
+          throw new Error(errorMessage);
         });
       }
       return response.json();
