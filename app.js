@@ -33,14 +33,14 @@ function setDownloadLink(imageData) {
 
 const apiHost = 'https://api.stability.ai';
 const engineId = 'stable-diffusion-v1-6';
-const apiKey = 'sk-lY2KWdJhoeXfNBbePmSo7tfYUQXhDWDY0QdldKNGFx9TKwxF';
+const apiKey = 'YOUR_API_KEY';
 
 function convertToIllustration(imageData) {
   const formData = new FormData();
   formData.append('init_image', dataURItoBlob(imageData), 'image.png');
-  formData.append('init-image-mode', 'IMAGE_STRENGTH');
-  formData.append('image-strength', 0.35);
-  formData.append('text-prompts[0][text]', 'Galactic dog wearing a cape');
+  formData.append('init_image_mode', 'IMAGE_STRENGTH');
+  formData.append('image_strength', 0.35);
+  formData.append('text_prompts[0][text]', 'Galactic dog wearing a cape');
   formData.append('cfg_scale', 7);
   formData.append('samples', 1);
   formData.append('steps', 30);
