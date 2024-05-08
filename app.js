@@ -22,7 +22,6 @@ captureBtn.addEventListener('click', () => {
   const ctx = canvas.getContext('2d');
   ctx.drawImage(cameraStream, 0, 0);
   const imageData = canvas.toDataURL('image/png');
-
   convertToIllustration(imageData);
 });
 
@@ -34,14 +33,14 @@ function setDownloadLink(imageData) {
 
 const apiHost = 'https://api.stability.ai';
 const engineId = 'stable-diffusion-v1-6';
-const apiKey = 'sk-cv6c536ROWDwzztOWSR3uByhh0r18whaSQSfaPIR9hY7AUT3';
+const apiKey = 'sk-lY2KWdJhoeXfNBbePmSo7tfYUQXhDWDY0QdldKNGFx9TKwxF'; // 環境変数から読み込むか、別ファイルに保存してください
 
 function convertToIllustration(imageData) {
   const formData = new FormData();
-  formData.append('init_image', dataURItoBlob(imageData), 'image.png');
-  formData.append('init_image_mode', 'IMAGE_STRENGTH');
-  formData.append('image_strength', 0.35);
-  formData.append('text_prompts[0][text]', 'Galactic dog wearing a cape');
+  formData.append('init-image', dataURItoBlob(imageData), 'image.png');
+  formData.append('init-image-mode', 'IMAGE_STRENGTH');
+  formData.append('image-strength', 0.35);
+  formData.append('text-prompts[0][text]', 'Galactic dog wearing a cape');
   formData.append('cfg_scale', 7);
   formData.append('samples', 1);
   formData.append('steps', 30);
