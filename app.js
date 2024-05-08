@@ -33,7 +33,7 @@ function setDownloadLink(imageData) {
 
 const apiHost = 'https://api.stability.ai';
 const engineId = 'stable-diffusion-v1-6';
-const apiKey = 'sk-lY2KWdJhoeXfNBbePmSo7tfYUQXhDWDY0QdldKNGFx9TKwxF'; // 環境変数から読み込むか、別ファイルに保存してください
+const apiKey = 'YOUR_API_KEY'; // 環境変数から読み込むか、別ファイルに保存してください
 
 function convertToIllustration(imageData) {
   const formData = new FormData();
